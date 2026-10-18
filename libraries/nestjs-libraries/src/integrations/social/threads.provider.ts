@@ -112,7 +112,7 @@ export class ThreadsProvider extends SocialAbstract implements SocialProvider {
     const state = makeSecureId(6);
     return {
       url:
-        'https://www.threads.net/oauth/authorize' +
+        'https://threads.net/oauth/authorize' +
         `?client_id=${process.env.THREADS_APP_ID}` +
         '&response_type=code' +
         `&redirect_uri=${encodeURIComponent(
@@ -147,7 +147,8 @@ export class ThreadsProvider extends SocialAbstract implements SocialProvider {
           )}` +
           `&grant_type=authorization_code` +
           `&client_secret=${process.env.THREADS_APP_SECRET}` +
-          `&code=${params.code}`
+          `&code=${params.code}`,
+        { method: 'POST' }
       )
     ).json();
 
